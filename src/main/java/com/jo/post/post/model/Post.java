@@ -1,6 +1,7 @@
 package com.jo.post.post.model;
 
 import com.jo.post.category.model.CategoryEntity;
+import com.jo.post.postImg.PostImg;
 import com.jo.post.util.BaseTime;
 import lombok.*;
 
@@ -22,11 +23,13 @@ public class Post extends BaseTime {
     private String title;
     @Column(nullable = false)
     private String content;
-    private String postImg;
+    @ManyToOne
+    @JoinColumn(name = "postImgId")
+    private PostImg postImg;
 
 
     @Builder
-    public Post(Long id, CategoryEntity category, String title, String content, String postImg) {
+    public Post(Long id, CategoryEntity category, String title, String content, PostImg postImg) {
         this.id = id;
         this.category = category;
         this.title = title;

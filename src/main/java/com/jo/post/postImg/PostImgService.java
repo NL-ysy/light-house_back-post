@@ -1,6 +1,7 @@
 package com.jo.post.postImg;
 
 
+import com.jo.post.category.model.CategoryEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class PostImgService {
 
     public void savePost(PostImgDto postImgDto) {
         postImgRepository.save(postImgDto.toEntity());
+    }
+
+    public Optional<PostImg> getPostImgById(Long id) {
+        return Optional.ofNullable(postImgRepository.findById(id).get());
     }
 
     public List<PostImgDto> getPostImgList() {

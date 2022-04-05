@@ -4,6 +4,7 @@ import com.jo.post.category.service.CategoryService;
 import com.jo.post.post.model.Post;
 import com.jo.post.post.model.PostDto;
 import com.jo.post.post.repository.PostRepository;
+import com.jo.post.postImg.PostImgService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class PostServiceImpl implements PostService{
 
     private final PostRepository postRepository;
     private final CategoryService categoryService;
+    private final PostImgService postImgService;
 
     @Transactional
     @Override
@@ -29,7 +31,7 @@ public class PostServiceImpl implements PostService{
                 .category(categoryService.getCategoryById(postDto.getCategoryId()).get())
                 .title(postDto.getTitle())
                 .content(postDto.getContent())
-                .postImg(postDto.getPostImg())
+                .postImg(postImgService.getPostImgById(postDto.getPostImgId()).get())
                 .build());
     }
 
@@ -56,7 +58,7 @@ public class PostServiceImpl implements PostService{
                     .category(categoryService.getCategoryById(postDto.getCategoryId()).get())
                     .title(postDto.getTitle())
                     .content(postDto.getContent())
-                    .postImg(postDto.getPostImg())
+                    .postImg(postImgService.getPostImgById(postDto.getPostImgId()).get())
                     .build();
             postRepository.save(post);
         }else {

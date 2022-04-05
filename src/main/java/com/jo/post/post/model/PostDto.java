@@ -13,13 +13,13 @@ public class PostDto {
     private Long categoryId;
     private String title;
     private String content;
-    private String postImg;
+    private Long postImgId;
 
-    public PostDto(Long id, Long categoryId, String title, String content, String postImg) {
+    public PostDto(Long id, Long categoryId, String title, String content, Long postImgId) {
         this.id = id;
         this.categoryId = categoryId;
         this.title = title;
         this.content = content;
-        this.postImg = postImg;
+        this.postImgId = postImgId;
     }
 }
